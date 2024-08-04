@@ -175,7 +175,7 @@ def run_sentence_invert(model, tokenizer, user_prompt='User:', alpha_2=50, alpha
     optimized_weight_matrix = sentence_invert(user_prompt, alpha_2, alpha_3, len_opt, num_iterations, len_seq)
 
     best_sentence = optimized_weight_matrix[0].cpu().numpy()
-    best_sent_tok = tf.nn.top_k(best_sentece, k=1, sorted=True)[1][:, 0].numpy()
+    best_sent_tok = tf.nn.top_k(best_sentence, k=1, sorted=True)[1][:, 0].numpy()
     user_prompt_tok = tokenizer.encode(user_prompt, add_special_tokens=False)
     upd_best_sent_tok = np.concatenate((user_prompt_tok, best_sent_tok))
     interm_sents = optimized_weight_matrix[1]
