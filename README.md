@@ -6,7 +6,7 @@
 3. Import the function:
   from Sentence_invert import run_sentence_invert
 4. Run the function:
-  run_sentence_invert(model, tokenizer, user_prompt='User:')
+  best_sentence, intermediate_sents, best_sent_norm_attn_wghts = run_sentence_invert(model, tokenizer, user_prompt='User:')
 
 ### Additional Information
 #### The model and tokenizer need to be loaded first and provided to the function. If the LLM is fine-tuned to have a specific prompting structure (e.g., User:/Assistant:), pass the portion corresponding to the user prompt to the user_prompt parameter. By default, user_prompt is set to 'User:'.
