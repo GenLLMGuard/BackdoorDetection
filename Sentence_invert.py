@@ -1,4 +1,4 @@
-def run_sentence_invert(model, tokenizer, user_prompt='User:', alpha_2=50, alpha_3=1, len_opt=100, num_iterations=200, len_seq=200):
+def run_sentence_invert(model, tokenizer, user_prompt='User:', alpha_2=50, alpha_3=0.5, len_opt=50, num_iterations=200, len_seq=200):
     
     import torch
     import tensorflow as tf
