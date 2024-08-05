@@ -3,9 +3,11 @@
   git clone https://github.com/GenLLMGuard/BackdoorDetection.git
 2. Navigate to the directory:
   cd BackdoorDetection
-3. Import the function:
+3. (Optional) Install dependencies:
+  pip install -r requirements.txt
+4. Import the function:
   from Sentence_invert import run_sentence_invert
-4. Run the function:
+5. Run the function:
   best_sentence, intermediate_sents, best_sent_norm_attention_wghts = run_sentence_invert(model, tokenizer, user_prompt='User:')
 
 ### Additional Information
