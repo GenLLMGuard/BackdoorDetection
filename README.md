@@ -3,7 +3,7 @@
   git clone https://github.com/GenLLMGuard/BackdoorDetection.git
 2. Navigate to the directory:
   cd BackdoorDetection
-3. (Optional) Install dependencies:
+3. Install dependencies (optional):
   pip install -r requirements.txt
 4. Import the function:
   from Sentence_invert import run_sentence_invert
