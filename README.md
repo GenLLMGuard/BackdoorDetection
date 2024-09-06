@@ -12,7 +12,7 @@
 
 ### Additional Information
 #### The model and tokenizer need to be loaded first and provided to the function. If the LLM is fine-tuned to have a specific prompting structure (e.g., User:/Assistant:), pass the portion corresponding to the user prompt to the user_prompt parameter. By default, user_prompt is set to 'User:'.
-#### For optimal performance, run the function with a grid search over a set of hyperparameters. Varying alpha_2 and alpha_3 should be sufficient, as this helps accommodate differences in dictionary size and the number of attention heads between different LLMs. The remaining hyperparameters do not need to be adjusted. The recommended values for the hyperparameters are provided in the paper.
+#### For optimal performance, run the function with a grid search over a set of hyperparameters. Varying alpha_2 and alpha_3 should be sufficient, as this helps accommodate differences in dictionary size and attention heads between LLMs. The remaining hyperparameters do not need to be adjusted. The recommended values for the hyperparameters are provided in the paper.
 ##### alpha_2: Weight of the diversity loss. Defaults to 0.5.
 ##### alpha_3: Weight of the attention loss. Defaults to 0.5.
 ##### len_opt: Number of tokens updated in each optimization iteration. Defaults to 50.
