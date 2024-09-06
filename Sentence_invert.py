@@ -1,4 +1,4 @@
-def run_sentence_invert(model, tokenizer, user_prompt='User:', alpha_2=50, alpha_3=0.5, len_opt=50, num_iterations=200, len_seq=200):
+def run_sentence_invert(model, tokenizer, user_prompt='User:', alpha_2=0.5, alpha_3=0.5, len_opt=50, num_iterations=200, len_seq=200):
     
     import torch
     import tensorflow as tf
@@ -86,7 +86,7 @@ def run_sentence_invert(model, tokenizer, user_prompt='User:', alpha_2=50, alpha
             attn_loss = torch.mean(torch.amax(normal_attn, dim=(0, 1)))
 
             # Define loss function
-            loss = spec_prob + alpha_2*torch.pow(diver_loss, 0.5) - alpha_3*attn_loss
+            loss = spec_prob + 100*alpha_2*torch.pow(diver_loss, 0.5) - alpha_3*attn_loss
 
             # Compute gradients and update weights
             loss.backward()
@@ -145,7 +145,7 @@ def run_sentence_invert(model, tokenizer, user_prompt='User:', alpha_2=50, alpha
                 temp_attn_loss = torch.mean(torch.amax(temp_normal_attn, dim=(0, 1)))
 
                 # Define loss function
-                real_loss = temp_avg_spec_prob + alpha_2*torch.pow(temp_diver_loss, 0.5) - alpha_3*temp_attn_loss
+                real_loss = temp_avg_spec_prob + 100*alpha_2*torch.pow(temp_diver_loss, 0.5) - alpha_3*temp_attn_loss
 
                 # Update weight_vector
                 if True: # real_loss < min_real_loss:
