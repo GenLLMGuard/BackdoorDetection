@@ -31,6 +31,7 @@ def run_sentence_invert(model, tokenizer, user_prompt='User:', alpha_2=0.5, alph
     def sentence_invert(user_prompt, alpha_2, alpha_3, len_opt, num_iterations, len_seq, max_length=256, learning_rate=0.1):
         # Vectorize the user prompt structure
         orgnl_input_ids, orgnl_attention_masks = encode_text([user_prompt], max_length=max_length, padding=False, truncation=True, add_special_tokens=False)
+        user_tokens = tuple(orgnl_input_ids.squeeze(0))
         # Get the input embedding vectors
         input_embeddings = model.get_input_embeddings()(orgnl_input_ids)
         # Create original target distribution
@@ -150,12 +151,12 @@ def run_sentence_invert(model, tokenizer, user_prompt='User:', alpha_2=0.5, alph
                 # Update weight_vector
                 if True: # real_loss < min_real_loss:
                     local_weight_vector = temp_weight_vector
-                    local_trigger = tuple(token.item() for token in combination)
+                    local_trigger = tuple(token.item() for token in user_tokens+combination)
                     min_real_loss = real_loss
                     local_attn = temp_normal_attn
                     print(f'i: {i}')
                     print(f'Loss value: {real_loss}')
-                    print(f'Sentence: {tokenizer.decode(combination, skip_special_tokens=False)}')
+                    print(f'Sentence: {tokenizer.decode(local_trigger, skip_special_tokens=False)}')
 
             output_dict[local_trigger] = min_real_loss
             weight_vector.data = local_weight_vector.data
