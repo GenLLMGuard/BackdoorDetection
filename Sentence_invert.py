@@ -6,6 +6,7 @@ def run_sentence_invert(model, tokenizer, user_prompt='User:', alpha_2=0.5, alph
     import itertools
     from collections import defaultdict
     import numpy as np
+    import numpy as np
 
     # Check if GPU is available
     if torch.cuda.is_available():
